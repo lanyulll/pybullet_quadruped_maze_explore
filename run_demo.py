@@ -50,7 +50,7 @@ except ModuleNotFoundError:
 PROJECT_DIR = Path(__file__).resolve().parent
 
 from env.viscnt_env import MazeEnv
-from eight_axis_quadruped_control import EightAxisQuadrupedDemo
+from quadruped_control import EightAxisQuadrupedDemo
 
 
 ACTION_TO_MOVE = {
