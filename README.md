@@ -22,7 +22,7 @@ The trained policy chooses one of four grid actions: up, down, left, or right. `
 |   `-- viscnt_env.py                 # Gymnasium maze environment
 |-- model/
 |   `-- ppo_maze.zip                  # Pretrained PPO model
-|-- eight_axis_quadruped_control.py   # PyBullet 12-axis quadruped URDF, IK, gait control
+|-- quadruped_control.py   # PyBullet 12-axis quadruped URDF, IK, gait control
 |-- run_demo.py                       # Full PyBullet maze demo
 |-- train.py                          # PPO training script
 |-- test._model.py                    # Batch evaluation and plotting script
@@ -64,7 +64,7 @@ python run_demo.py --direct --duration 30 --no-topdown
 Use a custom model:
 
 ```powershell
-python run_demo.py --model .\model\ppo_maze.zip --size 15 --max-steps 1000
+python run_demo.py --model .\model\ppo_maze.zip --size 9 --max-steps 100
 ```
 
 ## Training
@@ -98,7 +98,7 @@ Evaluation outputs are written to `eval_results/`, including per-episode results
 - `env/viscnt_env.py`: Defines `MazeEnv`, a Gymnasium environment with six-dimensional observations: visit counts for the four neighboring cells plus normalized goal direction.
 - `train.py`: Creates `MazeEnv`, validates it with Stable-Baselines3, trains PPO, and saves learning curves.
 - `test._model.py`: Loads a PPO model, computes shortest-path lengths with BFS, measures success rate and step count, and saves evaluation charts.
-- `eight_axis_quadruped_control.py`: Generates a compact 12-axis quadruped URDF at runtime and controls the robot with inverse kinematics and gait planning.
+- `quadruped_control.py`: Generates a compact 12-axis quadruped URDF at runtime and controls the robot with inverse kinematics and gait planning.
 - `run_demo.py`: Wraps the maze environment in a PyBullet scene, executes PPO actions with the quadruped, and renders walls, goals, moving obstacles, camera views, and debug overlays.
 
 ## Notes
